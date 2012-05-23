@@ -5,7 +5,7 @@ define('VIEW_FUNC_PREFIX', 'wc_view_'); /* prefix to use in public functions */
 define('EXT', 'php');
 define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
 define('PUBLICPATH', './');
-define('APPPATH', PUBLICPATH.'../');
+define('APPPATH', PUBLICPATH.'./');
 define('LIBPATH', APPPATH.'lib/');
 define('VIEWPATH', APPPATH.'views/');
 define('LOGPATH', APPPATH.'logs/');

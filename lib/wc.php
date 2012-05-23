@@ -168,6 +168,8 @@ function wc_log_write($message, $filename = NULL, $function = NULL, $line = NULL
 	
 	flock($handle, LOCK_EX);
 	
+	echo $log_message."\n";
+	
 	if(fwrite($handle, $log_message."\n") === FALSE) {
 		echo "wc error: Cannot write to file (".$log_filename.")";
 		exit;		
