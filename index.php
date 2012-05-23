@@ -44,8 +44,8 @@ function main()
 	ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
 	
-	set_error_handler("wc_log_php", E_ALL); /* php errors will be printed into logfiles */
-	set_exception_handler("wc_log_exceptions"); /* exceptions will be printed into logfiles */
+	//set_error_handler("wc_log_php", E_ALL); /* php errors will be printed into logfiles */
+	//set_exception_handler("wc_log_exceptions"); /* exceptions will be printed into logfiles */
 	date_default_timezone_set($config['timezone']);	/* default timezone */
 
 	wc_load_library(); /* loading libraries */

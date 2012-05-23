@@ -131,6 +131,7 @@ function wc_log_write($message, $filename = NULL, $function = NULL, $line = NULL
 	global $config;
 	
 	if(!isset($config['print_log']) || !$config['print_log']) {
+		wc_log_exceptions(NULL);
 		return;
 	}
 	
