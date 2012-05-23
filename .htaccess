@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+	
+RewriteEngine On
+	
+RewriteBase /rsvps_honda2/
+	
+	
+RewriteCond %{REQUEST_FILENAME} !-f
+  	
+RewriteCond %{REQUEST_FILENAME} !-d
+  	
+RewriteRule ^([^./]+)/?([^.]*)?\.?(.*)?$ index.php?f=$1&a=$2&e=$3 [QSA] [L]
+
+</IfModule>
