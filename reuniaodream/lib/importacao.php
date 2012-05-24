@@ -20,11 +20,12 @@ function importacao()
 	wc_log_write("Importacao: Concessionarias iniciada.");
 	
 	global $db_conn;
-	$documento = "../importacao/concessionarias.csv";
+	$documento = "importacao/concessionarias.csv";
 	
 	if(!file_exists($documento)) {
-		wc_log_write("{$documento} nao existe. Caminho nao encontrado");
-		wc_http_500();
+		//wc_log_write("{$documento} nao existe. Caminho nao encontrado");
+		//wc_http_500();
+		echo "{$documento} nao existe. Caminho nao encontrado";
 		return;
 	}
 	
@@ -37,6 +38,7 @@ function importacao()
 			$nome_guerra = trim($dados[1]);
 			$cod = trim($dados[2]);
 			$tipo = trim($dados[3]);
+			$num_participantes = trim($dados[4]);
 			$tipo_num = MATRIZ;
 			
 			if(!$cod) continue; // pula linhas em branco
@@ -46,14 +48,17 @@ function importacao()
 			}
 			
 			$insercao = array(
-				'int_assistencias_cod_pk'			=>	$cod,
-				'str_assistencias_grupo'			=>	$grupo_nome_atual,
-				'str_assistencias_nome_guerra'		=>	$nome_guerra,
-				'int_assistencias_tipo'				=>	$tipo_num,
+				'int_assistencias_cod_pk'					=>	$cod,
+				'str_assistencias_grupo'					=>	$grupo_nome_atual,
+				'str_assistencias_nome_guerra'				=>	$nome_guerra,
+				'int_assistencias_tipo'						=>	$tipo_num,
+				'int_assistencias_num_participantes'		=>	$num_participantes,
 			);
 			
 			$sql = wc_sql_insert("tab_assistencias", $insercao);
 			$db_conn->exec($sql);
+			
+			echo $sql."<br>";
 		}
 		
 		fclose($handle);
@@ -123,24 +128,34 @@ function wc_view_importacao_num_participantes($args, $ext)
 
 function wc_view_limpar_base($args, $ext)
 {
-	// Setar o tempo de execucao infinito
-	ini_set('max_execution_time', 0);
-	
-	importacao_reseta("tab_inscricoes");
-	importacao_reseta("tab_inscricoes_assistencias");
-	importacao_reseta("tab_participantes");
-	
-	wc_http_redirect(wc_site_uri(""));
+	if(isset($args[0]) && $args[0]) {
+		$senha_limpesa = $args[0];
+		echo $senha_limpesa;
+		if( $senha_limpesa == 'Xa!Kds12' ){
+			// Setar o tempo de execucao infinito
+			ini_set('max_execution_time', 0);
+			
+			importacao_reseta("tab_inscricoes");
+			importacao_reseta("tab_inscricoes_assistencias");
+			importacao_reseta("tab_participantes");
+			
+			wc_http_redirect(wc_site_uri(""));
+		} else {
+			return wc_http_404();
+		}
+	} else {
+		return wc_http_404();
+	}
 }
 
 // funcao externa
-/*function wc_view_importacao($args, $ext)
+/*
+function wc_view_importacao_nova($args, $ext)
 {
 	// Setar o tempo de execucao infinito
 	ini_set('max_execution_time', 0);
 	
 	importacao_reseta("tab_assistencias");
 	importacao();
-}
-*/
+}*/
 ?>
