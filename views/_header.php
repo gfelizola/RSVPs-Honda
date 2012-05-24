@@ -32,7 +32,7 @@
 				
 				<!-- ALERTA -->
 				<div class="alerta margem_bottom_pequena">
-					<p><strong>Data:</strong> 04 de outubro de 2011</p>
-					<p><strong>Local: </strong>Villa  Noah – São Paulo/SP</p> 
+					<p><strong>Data:</strong> 05 de julho de 2012 - 08h às 14h</p>
+					<p><strong>Local:</strong> Centro de Convenções Brasil 21 - Brasília/DF </p> 
 				</div>
 				<!-- FIM DE ALERTA -->

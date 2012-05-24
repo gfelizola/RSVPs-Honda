@@ -2,7 +2,7 @@
 	
 RewriteEngine On
 	
-RewriteBase /rsvps_honda2/
+RewriteBase /reuniaonacional2r/
 	
 	
 RewriteCond %{REQUEST_FILENAME} !-f

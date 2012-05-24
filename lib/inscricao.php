@@ -5,7 +5,7 @@ function inscricao_concessionaria_por_codigo($codigo)
 {
 	global $db_conn;
 	
-	$sql = "SELECT * FROM tab2_assistencias WHERE int_assistencias_cod_pk = '{$codigo}' LIMIT 1";
+	$sql = "SELECT * FROM tab_assistencias WHERE int_assistencias_cod_pk = '{$codigo}' LIMIT 1";
 	
 	$sth = $db_conn->prepare($sql);
 	$sth->execute();
@@ -45,7 +45,7 @@ function inscricao_cod_por_concessionaria($concessionaria_cod)
 {
 	global $db_conn;
 	
-	$sql = "SELECT int_inscricoes_assistencias_inscricao_id_fk FROM tab2_inscricoes_assistencias WHERE int_inscricoes_assistencias_assistencia_id_fk = '{$concessionaria_cod}' LIMIT 1";
+	$sql = "SELECT int_inscricoes_assistencias_inscricao_id_fk FROM tab_inscricoes_assistencias WHERE int_inscricoes_assistencias_assistencia_id_fk = '{$concessionaria_cod}' LIMIT 1";
 	
 	
 	$sth = $db_conn->prepare($sql);
@@ -72,7 +72,7 @@ function inscricao_salva_nova()
 		'int_inscricoes_id_pk'	=>	NULL,
 	);
 	
-	$sql = wc_sql_insert("tab2_inscricoes", $dados);
+	$sql = wc_sql_insert("tab_inscricoes", $dados);
 	$db_conn->exec($sql);
 	
 	return $db_conn->lastInsertId();
@@ -88,7 +88,7 @@ function inscricao_associa_concessionaria($inscricao_numero, $concessionaria_cod
 		'int_inscricoes_assistencias_inscricao_id_fk'		=>	$inscricao_numero,
 	);
 	
-	$sql = wc_sql_insert("tab2_inscricoes_assistencias", $dados);
+	$sql = wc_sql_insert("tab_inscricoes_assistencias", $dados);
 	$db_conn->exec($sql);
 }
 
@@ -112,7 +112,7 @@ function inscricao_concessionarias($inscricao_numero)
 {
 	global $db_conn;
 	
-	$sql = "SELECT tab2_assistencias.* FROM tab2_assistencias INNER JOIN tab2_inscricoes_assistencias ON int_inscricoes_assistencias_assistencia_id_fk = int_assistencias_cod_pk WHERE int_inscricoes_assistencias_inscricao_id_fk = '{$inscricao_numero}'";
+	$sql = "SELECT tab_assistencias.* FROM tab_assistencias INNER JOIN tab_inscricoes_assistencias ON int_inscricoes_assistencias_assistencia_id_fk = int_assistencias_cod_pk WHERE int_inscricoes_assistencias_inscricao_id_fk = '{$inscricao_numero}'";
 	
 	$sth = $db_conn->prepare($sql);
 	$sth->execute();
@@ -153,7 +153,7 @@ function inscricao_lista_todas($codigo)
 	
 	global $db_conn;
 	
-	$sql = "SELECT * FROM tab2_participantes WHERE int_participantes_inscricao_cod_fk = '{$codigo}' ORDER BY int_participantes_cod_pk";
+	$sql = "SELECT * FROM tab_participantes WHERE int_participantes_inscricao_cod_fk = '{$codigo}' ORDER BY int_participantes_cod_pk";
 	
 	$sth = $db_conn->prepare($sql);
 	$sth->execute();
@@ -192,7 +192,7 @@ function inscricao_salva_participante($inscricao_cod, $nome, $cargo, $cracha, $c
 		'int_participantes_carro'				=>	$carro,
 	);
 	
-	$sql = wc_sql_insert("tab2_participantes", $dados);
+	$sql = wc_sql_insert("tab_participantes", $dados);
 	$db_conn->exec($sql);
 }
 
@@ -207,7 +207,7 @@ function inscricao_atualiza_participante($participante_cod, $nome, $cargo, $crac
 		'int_participantes_carro'				=>	$carro,
 	);
 	
-	$sql = wc_sql_update("tab2_participantes", $dados);
+	$sql = wc_sql_update("tab_participantes", $dados);
 	$sql .= " WHERE int_participantes_cod_pk = ".$participante_cod;
 	
 	$db_conn->exec($sql);
@@ -217,7 +217,7 @@ function inscricao_carrega_participante($participante_cod)
 {
 	global $db_conn;
 	
-	$sql = "SELECT * FROM tab2_participantes WHERE int_participantes_cod_pk = '{$participante_cod}' LIMIT 1";
+	$sql = "SELECT * FROM tab_participantes WHERE int_participantes_cod_pk = '{$participante_cod}' LIMIT 1";
 	
 	$sth = $db_conn->prepare($sql);
 	$sth->execute();
@@ -230,14 +230,14 @@ function inscricao_carrega_participante($participante_cod)
 function inscricao_remove_participante($participante_cod)
 {
 	global $db_conn;
-	$sql = "DELETE FROM tab2_participantes WHERE int_participantes_cod_pk = '{$participante_cod}'";
+	$sql = "DELETE FROM tab_participantes WHERE int_participantes_cod_pk = '{$participante_cod}'";
 	$db_conn->exec($sql);
 }
 
 function inscricao_remove_concessionaria($inscricao_cod, $concessionaria_cod)
 {
 	global $db_conn;
-	$sql = "DELETE FROM tab2_inscricoes_assistencias WHERE int_inscricoes_assistencias_assistencia_id_fk = '{$concessionaria_cod}' AND int_inscricoes_assistencias_inscricao_id_fk = '{$inscricao_cod}'";
+	$sql = "DELETE FROM tab_inscricoes_assistencias WHERE int_inscricoes_assistencias_assistencia_id_fk = '{$concessionaria_cod}' AND int_inscricoes_assistencias_inscricao_id_fk = '{$inscricao_cod}'";
 	$db_conn->exec($sql);
 }
 
@@ -245,7 +245,7 @@ function inscricao_lista_todas_excel()
 {
 	global $db_conn;
 	
-	$sql = "SELECT * FROM tab2_inscricoes ORDER BY dta_inscricoes_criado_em ASC";
+	$sql = "SELECT * FROM tab_inscricoes ORDER BY dta_inscricoes_criado_em ASC";
 	
 	$sth = $db_conn->prepare($sql);
 	$sth->execute();
@@ -261,12 +261,12 @@ function inscricao_admin_lista_todas($filtro_cod = NULL, $filtro_inscricao_num =
 	
 	
 	if(!$contar_total) {
-		$sql = "SELECT tab2_inscricoes.* FROM tab2_inscricoes";
+		$sql = "SELECT tab_inscricoes.* FROM tab_inscricoes";
 	} else {
-		$sql = "SELECT COUNT(*) AS total FROM tab2_inscricoes";
+		$sql = "SELECT COUNT(*) AS total FROM tab_inscricoes";
 	}
 	
-	$join = "INNER JOIN tab2_inscricoes_assistencias ON int_inscricoes_assistencias_inscricao_id_fk = int_inscricoes_id_pk INNER JOIN tab2_assistencias ON int_assistencias_cod_pk = int_inscricoes_assistencias_assistencia_id_fk";
+	$join = "INNER JOIN tab_inscricoes_assistencias ON int_inscricoes_assistencias_inscricao_id_fk = int_inscricoes_id_pk INNER JOIN tab_assistencias ON int_assistencias_cod_pk = int_inscricoes_assistencias_assistencia_id_fk";
 	
 	$sql .= " {$join} WHERE 1=1";
 	

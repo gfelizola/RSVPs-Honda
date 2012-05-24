@@ -52,7 +52,7 @@ function importacao()
 				'int_assistencias_tipo'				=>	$tipo_num,
 			);
 			
-			$sql = wc_sql_insert("tab2_assistencias", $insercao);
+			$sql = wc_sql_insert("tab_assistencias", $insercao);
 			$db_conn->exec($sql);
 		}
 		
@@ -85,7 +85,7 @@ function wc_view_importacao_uf($args, $ext)
 				'str_assistencias_uf'				=>	$uf,
 			);
 			
-			$sql = wc_sql_update("tab2_assistencias", $dados);
+			$sql = wc_sql_update("tab_assistencias", $dados);
 			$sql .= " WHERE int_assistencias_cod_pk = '{$cod}';";
 			
 			echo $sql."<br>";
@@ -111,7 +111,7 @@ function wc_view_importacao_num_participantes($args, $ext)
 				'int_assistencias_num_participantes'		=>	$num_participantes,
 			);
 			
-			$sql = wc_sql_update("tab2_assistencias", $dados);
+			$sql = wc_sql_update("tab_assistencias", $dados);
 			$sql .= " WHERE int_assistencias_cod_pk = '{$cod}';";
 			
 			echo $sql."<br>";
@@ -126,9 +126,9 @@ function wc_view_limpar_base($args, $ext)
 	// Setar o tempo de execucao infinito
 	ini_set('max_execution_time', 0);
 	
-	importacao_reseta("tab2_inscricoes");
-	importacao_reseta("tab2_inscricoes_assistencias");
-	importacao_reseta("tab2_participantes");
+	importacao_reseta("tab_inscricoes");
+	importacao_reseta("tab_inscricoes_assistencias");
+	importacao_reseta("tab_participantes");
 	
 	wc_http_redirect(wc_site_uri(""));
 }
@@ -139,7 +139,7 @@ function wc_view_limpar_base($args, $ext)
 	// Setar o tempo de execucao infinito
 	ini_set('max_execution_time', 0);
 	
-	importacao_reseta("tab2_assistencias");
+	importacao_reseta("tab_assistencias");
 	importacao();
 }
 */
