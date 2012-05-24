@@ -1,0 +1,17 @@
+<?php
+
+/* application configurations */
+$config = array();
+$config['home_index'] = 'home'; /* default function to be called as index */
+$config['timezone']	= 'America/Sao_Paulo';
+$config['locales'] = array('pt_BR.UTF-8', 'pt_BR', 'ptb');
+$config['site_uri'] = '/~danielkoch/rsvps_honda/';
+$config['print_log'] = TRUE;
+
+/* database configuration */
+/*$config['db_name'] = 'database'; 
+$config['db_host'] = '127.0.0.1';
+$config['db_user'] = 'root';
+$config['db_pass'] = '';*/
+
+?>
