@@ -1,14 +1,9 @@
 <IfModule mod_rewrite.c>
-	
 RewriteEngine On
-	
 RewriteBase /reuniaonacional2r/
-	
-	
+
 RewriteCond %{REQUEST_FILENAME} !-f
-  	
 RewriteCond %{REQUEST_FILENAME} !-d
-  	
 RewriteRule ^([^./]+)/?([^.]*)?\.?(.*)?$ index.php?f=$1&a=$2&e=$3 [QSA] [L]
 
 </IfModule>
