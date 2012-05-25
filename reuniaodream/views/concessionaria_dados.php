@@ -15,12 +15,12 @@
 
 		<tr>
 			<th>Razão Social:</th>
-			<td><?php echo htmlspecialchars( $concessionaria['str_assistencias_grupo'] ) ?></td>
+			<td><?php echo $concessionaria['str_assistencias_grupo'] ?></td>
 		</tr>
 
 		<tr>
 			<th>Nome Fantasia:</th>
-			<td><?php echo htmlspecialchars( $concessionaria['str_assistencias_nome_guerra'] ) ?></td>
+			<td><?php echo $concessionaria['str_assistencias_nome_guerra'] ?></td>
 		</tr>
 
 		<!-- tr>

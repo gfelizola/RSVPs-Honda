@@ -32,7 +32,7 @@
 				
 				<!-- ALERTA -->
 				<div class="alerta margem_bottom_pequena">
-					<p><strong>Data:</strong> 05 de julho de 2012 - 18h às 23h</p>
+					<p><strong>Data:</strong> 05 de julho de 2012</p>
 					<p><strong>Local:</strong> Dúnia City Hall - Brasília/DF</p> 
 				</div>
 				<!-- FIM DE ALERTA -->

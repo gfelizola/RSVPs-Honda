@@ -330,8 +330,8 @@ function inscricao_gera_excel()
 		'Código',
 		'Grupo',
 		'Nome Guerra',
-		'Município',
-		'UF',
+		//'Município',
+		//'UF',
 		//'Tipo',
 		
 		// informacoes do participante
@@ -368,8 +368,8 @@ function inscricao_gera_excel()
 			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2, $linha_concessionarias, $conc['int_assistencias_cod_pk']);
 			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3, $linha_concessionarias, $conc['str_assistencias_grupo']);
 			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(4, $linha_concessionarias, $conc['str_assistencias_nome_guerra']);
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(5, $linha_concessionarias, $conc['str_assistencias_municipio']);
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(6, $linha_concessionarias, $conc['str_assistencias_uf']);
+			//$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(5, $linha_concessionarias, $conc['str_assistencias_municipio']);
+			//$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(6, $linha_concessionarias, $conc['str_assistencias_uf']);
 			//$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(7, $linha_concessionarias, ($conc['int_assistencias_tipo'] == MATRIZ ? "Matriz" : "Filial"));
 			
 		}
@@ -384,10 +384,10 @@ function inscricao_gera_excel()
 				$linha_participantes++;
 			}
 			
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(7, $linha_participantes, $part['str_participantes_nome']);
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(8, $linha_participantes, $part['str_participantes_cargo']);
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(9, $linha_participantes, $part['str_participantes_cracha']);
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(10, $linha_participantes, ($part['int_participantes_carro'] == CARRO_SIM ? "sim" : "não"));
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(5, $linha_participantes, $part['str_participantes_nome']);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(6, $linha_participantes, $part['str_participantes_cargo']);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(7, $linha_participantes, $part['str_participantes_cracha']);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(8, $linha_participantes, ($part['int_participantes_carro'] == CARRO_SIM ? "sim" : "não"));
 		}
 		
 		

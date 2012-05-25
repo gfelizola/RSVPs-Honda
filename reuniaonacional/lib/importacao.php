@@ -32,7 +32,7 @@ function importacao()
 	if(($handle = fopen($documento, "r")) !== FALSE)
 	{
 		
-		while (($dados = fgetcsv($handle, 500000, ";")) !== FALSE)
+		while (($dados = fgetcsv($handle, 500000, ",")) !== FALSE)
 		{
 			$grupo_nome_atual = trim($dados[0]);
 			$nome_guerra = trim($dados[1]);
@@ -149,7 +149,6 @@ function wc_view_limpar_base($args, $ext)
 }
 
 // funcao externa
-/*
 function wc_view_importacao_nova($args, $ext)
 {
 	// Setar o tempo de execucao infinito
@@ -157,5 +156,5 @@ function wc_view_importacao_nova($args, $ext)
 	
 	importacao_reseta("tab_assistencias");
 	importacao();
-}*/
+}
 ?>

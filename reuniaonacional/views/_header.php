@@ -32,7 +32,7 @@
 				
 				<!-- ALERTA -->
 				<div class="alerta margem_bottom_pequena">
-					<p><strong>Data:</strong> 05 de julho de 2012 - 08h às 14h</p>
+					<p><strong>Data:</strong> 05 de julho de 2012</p>
 					<p><strong>Local:</strong> Centro de Convenções Brasil 21 - Brasília/DF </p> 
 				</div>
 				<!-- FIM DE ALERTA -->

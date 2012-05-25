@@ -47,6 +47,9 @@ function importacao()
 				$tipo_num = FILIAL;
 			}
 			
+			$grupo_nome_atual = htmlentities( $grupo_nome_atual, ENT_COMPAT ) ;
+			$nome_guerra = htmlentities( $nome_guerra, ENT_COMPAT ) ;
+			
 			$insercao = array(
 				'int_assistencias_cod_pk'					=>	$cod,
 				'str_assistencias_grupo'					=>	$grupo_nome_atual,
@@ -149,7 +152,6 @@ function wc_view_limpar_base($args, $ext)
 }
 
 // funcao externa
-/*
 function wc_view_importacao_nova($args, $ext)
 {
 	// Setar o tempo de execucao infinito
@@ -157,5 +159,5 @@ function wc_view_importacao_nova($args, $ext)
 	
 	importacao_reseta("tab_assistencias");
 	importacao();
-}*/
+}
 ?>
