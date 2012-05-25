@@ -29,8 +29,7 @@
 	
 	<p class="aviso_voltar">Se for representar mais de uma concessionária, <a href="<?php echo wc_site_uri("concessionaria_agrega/{$inscricao_id}") ?>">cadastre-a aqui</a>.</p>
 	
-	<h1>Sua inscrição para a Reunião Nacional de Concessionários no dia 04 de outubro está confirmada.</h1>
-	<h6>ATENÇÃO: para inscrever-se no Encontro Nacional de Serviços e Peças, <a href="http://www.encontroposvendahda.com.br/" target="_blank">clique aqui</a> ou acesse <a href="http://www.encontroposvendahda.com.br/" target="_blank">http://www.encontroposvendahda.com.br/</a></h6>
+	<h1>Sua inscrição para a Reunião Nacional Honda Dream no 05 de julho de 2012 está confirmada.</h1>
 	
 	<?php if($disponivel): ?>
 		<!-- p class="aviso_voltar">Você pode adicionar mais participantes, <a href="<?php echo wc_site_uri("inscricao/{$inscricao_id}") ?>">cadastre-os aqui</a>.</p -->
